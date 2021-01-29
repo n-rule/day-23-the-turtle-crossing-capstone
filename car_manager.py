@@ -1,5 +1,5 @@
-from turtle import Turtle
 from random import randint, choice
+from turtle import Turtle
 
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
@@ -15,8 +15,9 @@ class CarManager(Turtle):
         self.color(choice(COLORS))
         self.setheading(180)
         self.goto(300, randint(-250, 280))
+        self.speed = (randint(1, 10))
 
     def move(self):
-        self.forward(randint(1, 7))
+        self.forward(self.speed)
 
     # def move(self):

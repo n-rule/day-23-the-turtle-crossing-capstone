@@ -1,5 +1,6 @@
 import time
 from turtle import Screen
+
 from car_manager import *
 from player import Player
 from scoreboard import Scoreboard
@@ -20,7 +21,6 @@ scoreboard = Scoreboard()
 game_is_on = True
 sleep = 0.1
 
-
 while game_is_on:
 
     if count % traffic == 0:
@@ -28,7 +28,7 @@ while game_is_on:
         list_cars.append(car)
     for car in list_cars:
         car.move()
-        if player.distance(car) < 22:
+        if player.distance(car) < 20:
             game_is_on = False
     time.sleep(sleep)
     screen.update()
@@ -36,7 +36,9 @@ while game_is_on:
 
     if player.ycor() > 280:
         player.starting_position()
-        traffic -= 2
+        traffic -= 1
+        if traffic == 0:
+            game_is_on = False
         sleep *= 0.95
         scoreboard.level_up()
 
